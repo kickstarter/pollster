@@ -1,9 +1,13 @@
 (function ($) {
+  /*
+    example:
 
-  //The timeout has to live in this scope
-  var timeout;
-
-  function Pollster(url, callback, options) {
+    new Pollster(the_polling_endpoint, function() {
+      if (polling_should_stop) {
+        return true;
+      }
+    })
+  */
     this.url = url;
     this.callback = callback || function () { return; };
     this.options = jQuery.extend({
