@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
 
   //The timeout has to live in this scope
   var timeout;
@@ -77,4 +77,4 @@
 
   };
 
-}());
+}(jQuery));
