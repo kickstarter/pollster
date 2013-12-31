@@ -8,8 +8,9 @@
       }
     })
   */
+  function Pollster(url, finished, options) {
     this.url = url;
-    this.callback = callback || function () { return; };
+    this.finished = finished || function () { return; };
     this.options = jQuery.extend({
       delay: 30 * 1000,
       on_error: function () { return; },
@@ -64,7 +65,7 @@
       type: 'get',
       global: false,
       success: function (data) {
-        stop = _this.callback(data);
+        stop = _this.finished(data);
         cont();
       },
       error: function () {
