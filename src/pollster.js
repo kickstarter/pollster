@@ -31,14 +31,16 @@
   Pollster.prototype.start = function () {
     var _this = this;
     this.running = true;
-    timeout = setTimeout(function () {
+    this.timeout = setTimeout(function () {
       _this.go();
     }, this.options.delay);
   };
 
   Pollster.prototype.stop = function () {
     this.running = false;
-    clearTimeout(timeout);
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
   };
 
   Pollster.prototype.go = function () {
