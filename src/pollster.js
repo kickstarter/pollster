@@ -11,7 +11,7 @@
   function Pollster(url, finished, options) {
     this.url = url;
     this.finished = finished || function () { return; };
-    this.options = jQuery.extend({
+    this.options = $.extend({
       delay: 30 * 1000,
       on_error: function () { return; },
       on_complete: function () { return; },
@@ -22,11 +22,9 @@
     this.go();
   }
 
-  if (typeof jQuery !== 'undefined') {
-    jQuery.pollster = function (url, callback, options) {
-      return new Pollster(url, callback, options);
-    };
-  }
+  $.pollster = function (url, finished, options) {
+    return new Pollster(url, finished, options);
+  };
 
   window.Pollster = Pollster;
 
