@@ -59,7 +59,7 @@
     }
 
     //TODO: get rid of this jQuery dependecy
-    this.xhr = jQuery.ajax({
+    this.xhr = $.ajax({
       url: this.url,
       dataType: 'json',
       type: 'get',
