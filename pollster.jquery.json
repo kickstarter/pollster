@@ -2,7 +2,7 @@
   "name": "pollster",
   "title": "Pollster",
   "description": "Ping a url for a specific response.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/samuelcole/pollster",
   "author": {
     "name": "Samuel Cole",
