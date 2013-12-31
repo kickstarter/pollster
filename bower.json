@@ -1,0 +1,19 @@
+{
+  "name": "jquery-pollster",
+  "version": "1.0.0",
+  "homepage": "https://github.com/samuelcole/pollster",
+  "authors": [
+    "Samuel Cole <sam@samuelcole.name>"
+  ],
+  "description": "A small library for doing repeated polling events.",
+  "main": "src/pollster.js",
+  "keywords": [
+    "polling",
+    "ajax"
+  ],
+  "ignore": [
+    "test/",
+    "libs/"
+    ],
+  "license": "MIT"
+}

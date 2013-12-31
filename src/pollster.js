@@ -6,7 +6,7 @@
   function Pollster(url, callback, options) {
     this.url = url;
     this.callback = callback || function () { return; };
-    this.options = $.extend({
+    this.options = jQuery.extend({
       delay: 30 * 1000,
       on_error: function () { return; },
       on_complete: function () { return; },
