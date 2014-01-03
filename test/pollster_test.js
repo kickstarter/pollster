@@ -27,8 +27,8 @@
         this.server.respondWith([200, { "Content-Type": "application/json" },
                            '["item1", "item2"]']);
       };
-      this.waitAndRespond = function () {
-        this.clock.tick(30 * 1000);
+      this.waitAndRespond = function (delay) {
+        this.clock.tick(delay || 30 * 1000);
         this.server.respond();
       };
     }
@@ -81,7 +81,7 @@
     ok(callback.calledOnce);
   });
 
-  test('does not stop polling on error if continue_on_error is set', function() {
+  test('continues polling on error if continue_on_error is set', function() {
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', callback, {
@@ -115,6 +115,27 @@
     this.waitAndRespond();
     this.server.respondWith([500, {}, ""]);
     this.waitAndRespond();
+    ok(callback.calledTwice);
+  });
+
+  test('multiple instances do not conflict', function() {
+    this.makeServer();
+    var callback = this.spy();
+    new Pollster('/ping', function () { return true; });
+    new Pollster('/ping', callback);
+    this.waitAndRespond();
+    this.waitAndRespond();
+    ok(callback.calledTwice);
+  });
+
+  test('the delay can be changed', function() {
+    var delay = 60 * 1000;
+    this.makeServer();
+    var callback = this.spy();
+    new Pollster('/ping', callback, { delay: delay });
+    this.server.respond();
+    this.waitAndRespond();
+    this.waitAndRespond(delay);
     ok(callback.calledTwice);
   });
 
