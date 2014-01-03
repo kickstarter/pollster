@@ -39,7 +39,13 @@
     ok(typeof Pollster === 'function');
   });
 
+  test('there is a jQuery function', function() {
+    expect(0);
+    jQuery.pollster('/pint', function () { });
+  });
+
   test('polls at least once', function() {
+    expect(1);
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', callback);
@@ -48,6 +54,7 @@
   });
 
   test('callback recieves data from server', function() {
+    expect(1);
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', callback);
@@ -56,6 +63,7 @@
   });
 
   test('stops polling when the callback returns true', function() {
+    expect(1);
     this.makeServer();
     var response = false;
     var callback = function () {
@@ -72,6 +80,7 @@
   });
 
   test('stops polling on server error', function() {
+    expect(1);
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', callback);
@@ -82,6 +91,7 @@
   });
 
   test('continues polling on error if continue_on_error is set', function() {
+    expect(1);
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', callback, {
@@ -96,6 +106,7 @@
   });
 
   test('calls on_error on error', function() {
+    expect(1);
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', function () { }, {
@@ -107,6 +118,7 @@
   });
 
   test('calls on_complete on success or error', function() {
+    expect(1);
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', function () { }, {
@@ -119,6 +131,7 @@
   });
 
   test('multiple instances do not conflict', function() {
+    expect(1);
     this.makeServer();
     var callback = this.spy();
     new Pollster('/ping', function () { return true; });
@@ -129,6 +142,7 @@
   });
 
   test('the delay can be changed', function() {
+    expect(1);
     var delay = 60 * 1000;
     this.makeServer();
     var callback = this.spy();
