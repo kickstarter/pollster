@@ -58,12 +58,15 @@
       }
     }
 
+    var url = this.url + (this.url.indexOf('?') > 0 ? '&' : '?') + 'pollster_timestamp=' + new Date().getTime();
+
     //TODO: get rid of this jQuery dependecy
     this.xhr = $.ajax({
-      url: this.url,
+      url: url,
       dataType: 'json',
       type: 'get',
       global: false,
+      cache: false,
       success: function (data) {
         stop = _this.finished(data);
         cont();
