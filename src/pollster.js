@@ -58,7 +58,7 @@
       }
     }
 
-    var url = this.url + (this.url.indexOf('?') > 0 ? '&' : '?') + 'pollster_timestamp=' + new Date().getTime();
+    var url = this.url + (this.url.indexOf('?') >= 0 ? '&' : '?') + 'pollster_timestamp=' + new Date().getTime();
 
     //TODO: get rid of this jQuery dependecy
     this.xhr = $.ajax({
