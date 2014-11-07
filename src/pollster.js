@@ -64,6 +64,7 @@
       dataType: 'json',
       type: 'get',
       global: false,
+      cache: false,
       success: function (data) {
         stop = _this.finished(data);
         cont();
